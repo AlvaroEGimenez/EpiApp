@@ -11,9 +11,11 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
@@ -22,6 +24,7 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocat
     private Location currentLocation;
     private static final int REQUEST_CODE = 101;
     private boolean isGPS;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,28 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocat
         googleMap.setMyLocationEnabled(true);
         googleMap.setOnMyLocationButtonClickListener(this);
         googleMap.setOnMyLocationClickListener(this);
+        mMap = googleMap;
+
+        mMap.setOnMapClickListener(latLng -> {
+            // Creating a marker
+            MarkerOptions markerOptions = new MarkerOptions();
+
+            // Setting the position for the marker
+            markerOptions.position(latLng);
+
+            // Setting the title for the marker.
+            // This will be displayed on taping the marker
+            markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+
+            // Clears the previously touched position
+            googleMap.clear();
+
+            // Animating to the touched position
+            googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+            // Placing a marker on the touched position
+            googleMap.addMarker(markerOptions);
+        });
     }
 
     @Override
