@@ -15,7 +15,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
 
-class GpsUtils {
+public class GpsUtils {
 
     private static final String TAG = "gps_utils";
 
@@ -25,7 +25,7 @@ class GpsUtils {
     private LocationManager locationManager;
 
 
-    GpsUtils(Context context) {
+    public GpsUtils(Context context) {
         this.context = context;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         mSettingsClient = LocationServices.getSettingsClient(context);
@@ -42,7 +42,7 @@ class GpsUtils {
     }
 
     // method for turn on GPS
-    void turnGPSOn(onGpsListener onGpsListener) {
+    public void turnGPSOn(onGpsListener onGpsListener) {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             if (onGpsListener != null) {
                 onGpsListener.gpsStatus(true);

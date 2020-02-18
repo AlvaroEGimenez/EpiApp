@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">EpiApp</string>
+    <string name="agregar_nuevo_domicilio">Agregar nuevo domicilio</string>
+    <string name="API_KEY">AIzaSyC2zHDanc-n-ZZDusS0Z9LSbD0wDtT9GUM</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tipo_de_estructura">Tipo de estructura</string>
+    <string name="otro">Otro</string>
+    <string name="informaci_n_demografica">información demografica</string>
+    <string name="localidad">Localidad</string>
+    <string name="barrio">Barrio</string>
+    <string name="apellido_familiar_opcional">Apellido familiar (opcional)</string>
+    <string name="habitantes">Habitantes</string>
+    <string name="telefono">Telefono</string>
+
 </resources>

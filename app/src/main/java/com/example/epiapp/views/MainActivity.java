@@ -1,4 +1,4 @@
-package com.example.epiapp;
+package com.example.epiapp.views;
 
 import android.Manifest;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import com.example.epiapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
