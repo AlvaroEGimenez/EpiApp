@@ -1,6 +1,5 @@
 package com.example.epiapp.views;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
@@ -11,8 +10,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.epiapp.GpsUtils;
+import com.example.epiapp.House;
+import com.example.epiapp.HouseAdapter;
 import com.example.epiapp.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -24,6 +27,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,18 +40,22 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocat
     private boolean isGPS;
     private GoogleMap mMap;
     private LatLng latLngMarker;
+    private List<House> houseList = new ArrayList<>();
 
 
     @BindView(R.id.add_button)
     Button buttonAdd;
+    @BindView(R.id.recyclerview_house)
+    RecyclerView recyclerView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-
         ButterKnife.bind(this);
+
+
         FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -83,9 +93,16 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocat
                 bundle.putDouble(DataActivity.KEY_LONG, latLngMarker.longitude);
                 intent.putExtras(bundle);
                 startActivity(intent);
-            }else Toast.makeText(this, "Seleccionar un punto en el mapa", Toast.LENGTH_SHORT).show();
+            }
 
         });
+
+        houseList = getHouseList();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        HouseAdapter houseAdapter = new HouseAdapter(houseList);
+        recyclerView.setAdapter(houseAdapter);
 
 
     }
@@ -102,7 +119,6 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocat
     }
 
 
-    @SuppressLint("RestrictedApi")
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -135,6 +151,12 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocat
             buttonAdd.setVisibility(View.VISIBLE);
         });
 
+        for (int i = 0; i < houseList.size(); i++) {
+
+            LatLng position = new LatLng(houseList.get(i).getLatitude(), houseList.get(i).getLongitude());
+            mMap.addMarker(new MarkerOptions().position(position));
+        }
+
 
     }
 
@@ -149,6 +171,24 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMyLocat
     @Override
     public void onMyLocationClick(@NonNull Location location) {
         Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+    }
+
+    private List<House> getHouseList() {
+        House house = new House(1, -27.0454352, -55.2252587, "Centro", "Jardin America", 1, 374345124, "Araujo", "Casa rejas negras");
+        House house1 = new House(1, -27.0464364, -55.2252690, "Centro", "Jardin America", 1, 374345124, "Araujo", "Casa rejas negras");
+        House house2 = new House(2, -27.0474376, -55.2253793, "Centro", "Jardin America", 1, 374345124, "Araujo", "Casa rejas negras");
+        House house3 = new House(5, -27.0484388, -55.2254896, "Centro", "Jardin America", 1, 374345124, "Araujo", "Casa rejas negras");
+        House house4 = new House(3, -27.0494390, -55.2255999, "Centro", "Jardin America", 1, 374345124, "Araujo", "Casa rejas negras");
+        House house5 = new House(4, -27.0404362, -55.2256601, "Centro", "Jardin America", 1, 374345124, "Araujo", "Casa rejas negras");
+
+        houseList.add(house);
+        houseList.add(house1);
+        houseList.add(house2);
+        houseList.add(house3);
+        houseList.add(house4);
+        houseList.add(house5);
+
+        return houseList;
     }
 
 

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "867508821982",
+    "firebase_url": "https://epiapp-4b6c0.firebaseio.com",
+    "project_id": "epiapp-4b6c0",
+    "storage_bucket": "epiapp-4b6c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867508821982:android:9cc8a29428e61005b2874f",
+        "android_client_info": {
+          "package_name": "com.example.epiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867508821982-p4r8ofuicer0h4qo22828hm9n9ce14th.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.epiapp",
+            "certificate_hash": "b3c79c23bca258e448c1e236f84e62c3e641b067"
+          }
+        },
+        {
+          "client_id": "867508821982-dh0itg4o46cg36hj7ko1mjjpe8gu92oj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdoAvUYi9E0UknYxH9x6uM1hKIPU0lsoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867508821982-dh0itg4o46cg36hj7ko1mjjpe8gu92oj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

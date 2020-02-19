@@ -36,6 +36,7 @@
     </Button>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_house"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

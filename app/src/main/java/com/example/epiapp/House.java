@@ -1,7 +1,7 @@
 package com.example.epiapp;
 
 public class House {
-
+    private int visits;
     private Double latitude;
     private Double longitude;
     private String neighborhood;
@@ -14,7 +14,8 @@ public class House {
     public House() {
     }
 
-    public House(Double latitude, Double longitude, String neighborhood, String city, int telephone, int residents, String surname, String description) {
+    public House(int visits,Double latitude, Double longitude, String neighborhood, String city, int telephone, int residents, String surname, String description) {
+        this.visits = visits;
         this.latitude = latitude;
         this.longitude = longitude;
         this.neighborhood = neighborhood;
@@ -23,6 +24,14 @@ public class House {
         this.residents = residents;
         this.surname = surname;
         this.description = description;
+    }
+
+    public int getVisits() {
+        return visits;
+    }
+
+    public void setVisits(int visits) {
+        this.visits = visits;
     }
 
     public Double getLatitude() {

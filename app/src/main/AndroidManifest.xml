@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".views.DataActivity"></activity>
+        <activity android:name=".views.DataActivity"/>
         <activity android:name=".views.MapActivity" />
         <activity android:name=".views.MainActivity">
             <intent-filter>

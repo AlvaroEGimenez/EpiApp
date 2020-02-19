@@ -13,5 +13,8 @@
     <string name="apellido_familiar_opcional">Apellido familiar (opcional)</string>
     <string name="habitantes">Habitantes</string>
     <string name="telefono">Telefono</string>
+    <string name="registros">Registros</string>
+    <string name="analisis_de_datos">Analisis de datos</string>
+    <string name="nuevo_registro">Nuevo registro</string>
 
 </resources>
